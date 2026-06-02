@@ -3,7 +3,7 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 40px 20px;
-    background-color: #26006c;
+    background-color: #0f002a;
     color: #ff007b;
 }
 
@@ -31,6 +31,7 @@ header h1 {
 }
 
 .projects {
+    background-color:#26006c ;
     padding: 20px;
     border: 1px solid #ff007b;
     border-radius: 4px;
