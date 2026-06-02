@@ -14,7 +14,11 @@
         <h1>Projets P5js de Alessio</h1>
     </header>
 
-    <main class="project-grid">
+
+
+<!-- /////////////////////////// -->
+<!-- MA VERSION //////////////// -->
+    <main class="project-grid gallery">
         <section class="projects">
             <h2>Projet 1</h2>
             <div class="links">
@@ -185,6 +189,39 @@
         </section>
 
     </main>
+
+        <!-- ///////////////////////////// -->
+
+    <style>
+        .lb { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none; z-index: 9999; }
+        .lb.open { display: block; }
+        .lb iframe { position: absolute; top: 5vh; left: 5vw; width: 90vw; height: 90vh; border: 0; background: #fff; }
+        .lb button {  z-index: 99; position: absolute; top: 1rem; right: 1rem; width: 3rem; height: 3rem; font-size: 1.5rem; background: #fff; border: 0; cursor: pointer; }
+       </style>
+       
+       <div class="lb" id="lb" aria-hidden="true">
+        <button type="button" aria-label="Fermer">×</button>
+        <iframe allow="camera; microphone; autoplay"></iframe>
+       </div>
+       
+       <script>
+        function makeLightbox(){
+         const lb = document.getElementById('lb');
+         const frame = lb.querySelector('iframe');
+         const close = lb.querySelector('button');
+       
+         const open = url => { frame.src = url; lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); };
+         const shut = () => { frame.src = 'about:blank'; lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); };
+       
+         document.querySelectorAll('.gallery a').forEach(a => {
+          a.addEventListener('click', e => { e.preventDefault(); open(a.href); });
+         });
+         close.addEventListener('click', shut);
+         lb.addEventListener('click', e => { if (e.target === lb) shut(); });
+         document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) shut(); });
+        }
+        makeLightbox();
+       </script>
 
 </body>
 </html>
